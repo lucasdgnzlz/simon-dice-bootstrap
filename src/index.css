@@ -1,0 +1,116 @@
+:root {
+  --color-interfaz-beige: #F1DBBF;
+  --color-interfaz-verde: #698269;
+  --color-tablero-rojo: #AA5656;
+  --color-tablero-amarillo: #E4C988;
+  --color-tablero-azul: #6096B4;
+  --color-bordes-tablero: #323232;
+
+  --color-tablero-verde-iluminado: #448444;
+  --color-tablero-rojo-iluminado: #a82c2c;
+  --color-tablero-amarillo-iluminado: #dcae43;
+  --color-tablero-azul-iluminado: #257dac;
+
+  --color-hover-boton: rgb(237, 207, 168);
+
+  --fuente-principal: 'VT323', monospace;
+}
+
+body{
+  background-color: var(--color-interfaz-beige);
+  overflow: hidden;
+}
+.cabecera{
+  background-color: var(--color-interfaz-verde);
+  padding: 3px 0;
+}
+.contenedor-visor{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.visor-rondas{
+  background-color: var(--color-interfaz-beige);
+  font-family: var(--fuente-principal);
+  font-size: 30px;
+  color: var(--color-interfaz-verde);
+}
+.contenedor-boton{
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+.boton-jugar{
+  width: 201px;
+  padding: 0.2rem 0;
+  background-color: var(--color-interfaz-beige);
+  border-color: var(--color-interfaz-beige);
+  text-align: center;
+  font-family: var(--fuente-principal);
+  font-size: 22px;
+  color: var(--color-interfaz-verde);
+  border-radius: 2px;
+}
+.boton-jugar:hover{
+  background-color: var(--color-hover-boton);
+  border-color: var(--color-interfaz-beige);
+  color: var(--color-interfaz-verde);
+}
+.contenedor-boton .boton-jugar:active{
+  background-color: var(--color-hover-boton);
+  border-color: var(--color-interfaz-beige);
+  color: var(--color-interfaz-verde);
+}
+
+.contenedor-tablero{
+  margin: 70px 0;
+}
+.tablero{
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 3.3px solid var(--color-bordes-tablero);
+}
+.row{
+  margin: 0;
+  margin-right: 0;
+}
+
+.cuadro-tablero{
+  min-width: 152px;
+  min-height: 152px;
+}
+
+.cuadro-verde{
+  background-color: var(--color-interfaz-verde);
+  border-bottom: 2px solid var(--color-bordes-tablero);
+  border-right: 2px solid var(--color-bordes-tablero);
+}
+.cuadro-rojo{
+  background-color: var(--color-tablero-rojo);
+  border-bottom: 2px solid var(--color-bordes-tablero);
+  border-left: 2px solid var(--color-bordes-tablero);
+}
+.cuadro-amarillo{
+  background-color: var(--color-tablero-amarillo);
+  border-top: 2px solid var(--color-bordes-tablero);
+  border-right: 2px solid var(--color-bordes-tablero);
+}
+.cuadro-azul{
+  background-color: var(--color-tablero-azul);
+  border-top: 2px solid var(--color-bordes-tablero);
+  border-left: 2px solid var(--color-bordes-tablero);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  padding: 0 10px;
+  width: 100%;
+  height: 40px;
+  font-family: var(--fuente-principal);
+  font-size: 30px;
+  color: var(--color-interfaz-verde);
+}
