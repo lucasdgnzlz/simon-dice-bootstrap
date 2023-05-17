@@ -23,6 +23,7 @@ body{
 .cabecera{
   background-color: var(--color-interfaz-verde);
   padding: 3px 0;
+  height: 154px;
 }
 .contenedor-visor{
   display: flex;
@@ -62,11 +63,30 @@ body{
   border-color: var(--color-interfaz-beige);
   color: var(--color-interfaz-verde);
 }
+.contenedor-boton .boton-jugar:disabled{
+  background-color: var(--color-hover-boton);
+  border-color: var(--color-interfaz-beige);
+  color: var(--color-interfaz-verde);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.contenedor-indicador-turnos{
+  max-width: 410px;
+}
+.indicador-turnos{
+  font-family: var(--fuente-principal);
+  text-align: center;
+  font-size: 22px;
+  color: var(--color-interfaz-beige);
+}
 
 .contenedor-tablero{
   margin: 70px 0;
   margin-left: auto;
   margin-right: auto;
+  max-width: 600px;
+  max-height: 400px;
+  overflow: hidden;
 }
 .tablero{
   display: flex;
@@ -81,8 +101,9 @@ body{
 }
 
 .cuadro-tablero{
-  min-width: 152px;
   min-height: 152px;
+  max-width: 300px;
+  max-height: 200px;
 }
 
 .cuadro-verde{
@@ -115,4 +136,20 @@ footer {
   font-family: var(--fuente-principal);
   font-size: 30px;
   color: var(--color-interfaz-verde);
+}
+
+#oculto{
+  display: none;
+}
+#verde-iluminado{
+  background-color: var(--color-tablero-verde-iluminado);
+}
+#rojo-iluminado{
+  background-color: var(--color-tablero-rojo-iluminado);
+}
+#amarillo-iluminado{
+  background-color: var(--color-tablero-amarillo-iluminado);
+}
+#azul-iluminado{
+  background-color: var(--color-tablero-azul-iluminado);
 }
