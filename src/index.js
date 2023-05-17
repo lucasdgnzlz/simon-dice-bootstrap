@@ -7,11 +7,11 @@ let indicadorDeTurnos = "";
 let listaSecuenciaMaquina = [];
 let listaSecuenciaUsuario = [];
 
-let coloresTablero = {
-  $colorVerde: document.querySelector(".cuadro-verde"),
-  $colorRojo: document.querySelector(".cuadro-rojo"),
-  $colorAmarillo: document.querySelector(".cuadro-amarillo"),
-  $colorAzul: document.querySelector(".cuadro-azul"),
+let cuadrosTablero = {
+  $cuadroVerde: document.querySelector(".cuadro-verde"),
+  $cuadroRojo: document.querySelector(".cuadro-rojo"),
+  $cuadroAmarillo: document.querySelector(".cuadro-amarillo"),
+  $cuadroAzul: document.querySelector(".cuadro-azul"),
 };
 
 function actualizarNumeroRonda() {
