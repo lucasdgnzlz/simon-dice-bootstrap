@@ -50,7 +50,7 @@ function gestionarRondas() {
     juegoComenzado = true;
     numeroDeRonda++;
 
-    actualizarIndicadorTurnos();
+    indicadorDeTurnos = "maquina";
     actualizarNumeroRonda();
     actualizarTurnos();
   } else {
@@ -59,38 +59,20 @@ function gestionarRondas() {
     if (indicadorDeTurnos === "maquina") {
       let tiempoEspera = listaSecuenciaMaquina.length * 1000;
       setTimeout(() => {
-        actualizarIndicadorTurnos();
+        indicadorDeTurnos = "usuario";
         actualizarNumeroRonda();
         actualizarTurnos();
       }, tiempoEspera);
     } else {
-      let tiempoEspera = listaSecuenciaMaquina.length * 1000;
-      setTimeout(() => {
-        actualizarIndicadorTurnos();
-        actualizarNumeroRonda();
-        actualizarTurnos();
-      }, tiempoEspera);
+      indicadorDeTurnos = "maquina";
+      actualizarNumeroRonda();
+      actualizarTurnos();
     }
-  }
-}
-
-function actualizarIndicadorTurnos() {
-  if (indicadorDeTurnos === "") {
-    indicadorDeTurnos = "maquina";
-  } else if (indicadorDeTurnos === "maquina") {
-    let tiempoEspera = secuenciaMaquina.length * 1000;
-
-    setTimeout(() => {
-      indicadorDeTurnos = "usuario"
-    }, tiempoEspera);
-  } else if (indicadorDeTurnos === "usuario") {
-    indicadorDeTurnos = "maquina";
   }
 }
 
 $botonJugar.addEventListener("click", () => {
   gestionarRondas();
-  ocultarBotonJugar();
   mostrarIndicadorTurnos();
 
   setTimeout(() => {
