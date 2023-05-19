@@ -2,7 +2,7 @@
   "name": "simon-dice-v2",
   "version": "1.0.0",
   "description": "Demo del juego 'Simón dice'",
-  "main": "src/index.html",
+  "main": "index.html",
   "scripts": {
     "start": "http-server",
     "cypress:open": "cypress open",
