@@ -1,5 +1,5 @@
 let obtenerNumeroAleatorio = () => {
-  let cantidadColores = Object.keys(coloresTablero).length;
+  let cantidadColores = Object.keys(cuadrosTablero).length;
 
   return Math.floor(Math.random() * cantidadColores);
 };
@@ -8,13 +8,13 @@ function obtenerColorAleatorio() {
   let numeroAleatorio = obtenerNumeroAleatorio();
 
   if (numeroAleatorio === 0) {
-    return coloresTablero.$colorVerde;
+    return cuadrosTablero.$cuadroVerde;
   } else if (numeroAleatorio === 1) {
-    return coloresTablero.$colorRojo;
+    return cuadrosTablero.$cuadroRojo;
   } else if (numeroAleatorio === 2) {
-    return coloresTablero.$colorAmarillo;
+    return cuadrosTablero.$cuadroAmarillo;
   } else if (numeroAleatorio === 3) {
-    return coloresTablero.$colorAzul;
+    return cuadrosTablero.$cuadroAzul;
   }
 }
 
@@ -23,19 +23,21 @@ function guardarColorMaquinaEnLista(colorObtenido) {
 }
 
 function mostrarColoresMaquina(colorMaquina) {
-  if (colorMaquina === coloresTablero.$colorVerde) {
-    colorMaquina.id = "verde-iluminado";
-  } else if (colorMaquina === coloresTablero.$colorRojo) {
-    colorMaquina.id = "rojo-iluminado";
-  } else if (colorMaquina === coloresTablero.$colorAmarillo) {
-    colorMaquina.id = "amarillo-iluminado";
-  } else if (colorMaquina === coloresTablero.$colorAzul) {
-    colorMaquina.id = "azul-iluminado";
-  }
+  if (indicadorDeTurnos === "maquina") {
+    if (colorMaquina === cuadrosTablero.$cuadroVerde) {
+      colorMaquina.id = "verde-iluminado";
+    } else if (colorMaquina === cuadrosTablero.$cuadroRojo) {
+      colorMaquina.id = "rojo-iluminado";
+    } else if (colorMaquina === cuadrosTablero.$cuadroAmarillo) {
+      colorMaquina.id = "amarillo-iluminado";
+    } else if (colorMaquina === cuadrosTablero.$cuadroAzul) {
+      colorMaquina.id = "azul-iluminado";
+    }
 
-  setTimeout(() => {
-    colorMaquina.id = "";
-  }, 500);
+    setTimeout(() => {
+      colorMaquina.id = "";
+    }, 300);
+  }
 }
 
 function gestionarColoresMaquina() {
@@ -53,5 +55,8 @@ function secuenciaMaquina() {
   let colorObtenido = obtenerColorAleatorio();
   guardarColorMaquinaEnLista(colorObtenido);
   gestionarColoresMaquina();
-  actualizarIndicadorTurnos();
+
+  setTimeout(() => {
+    gestionarActualizacionesTurnos();
+  }, 780);
 }
