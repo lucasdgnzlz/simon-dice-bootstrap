@@ -2,6 +2,7 @@ const $botonJugar = document.querySelector(".boton-jugar");
 
 let juegoComenzado = false;
 let numeroDeRonda = 0;
+let recordRonda = 0;
 let indicadorDeTurnos = "";
 
 let listaSecuenciaMaquina = [];
@@ -26,7 +27,8 @@ function ocultarBotonJugar() {
 }
 
 function mostrarBotonJugar() {
-  $botonJugar.id = "";
+  const $contenedorBotonJugar = document.querySelector(".contenedor-boton");
+  $contenedorBotonJugar.id = "";
   $botonJugar.disabled = false;
 }
 
@@ -35,7 +37,24 @@ function mostrarIndicadorTurnos() {
   $contenedorIndicadorTurnos.id = "";
 }
 
+function ocultarIndicadorTurnos() {
+  const $contenedorIndicadorTurnos = document.querySelector(".contenedor-indicador-turnos");
+  $contenedorIndicadorTurnos.id = "oculto";
+}
+
 function actualizarTurnos() {
+  if (indicadorDeTurnos === "") {
+    indicadorDeTurnos = "maquina";
+  } else if (indicadorDeTurnos === "maquina") {
+    indicadorDeTurnos = "usuario";
+  } else if (indicadorDeTurnos === "usuario") {
+    indicadorDeTurnos = "maquina";
+  } else {
+    return false;
+  }
+}
+
+function imprimirTurnos() {
   const $indicadorTurnos = document.querySelector(".indicador-turnos");
 
   if (indicadorDeTurnos === "maquina") {
@@ -45,14 +64,22 @@ function actualizarTurnos() {
   }
 }
 
+function gestionarActualizacionesTurnos() {
+  const retrasoEnMilisegundos = listaSecuenciaMaquina.length * 1000;
+  setTimeout(function () {
+    actualizarTurnos();
+    imprimirTurnos();
+  }, retrasoEnMilisegundos);
+}
+
 function gestionarRondas() {
   if (juegoComenzado === false) {
     juegoComenzado = true;
     numeroDeRonda++;
 
-    indicadorDeTurnos = "maquina";
-    actualizarNumeroRonda();
     actualizarTurnos();
+    actualizarNumeroRonda();
+    imprimirTurnos();
   } else {
     numeroDeRonda++;
 
@@ -61,18 +88,50 @@ function gestionarRondas() {
       setTimeout(() => {
         indicadorDeTurnos = "usuario";
         actualizarNumeroRonda();
-        actualizarTurnos();
+        imprimirTurnos();
       }, tiempoEspera);
     } else {
       indicadorDeTurnos = "maquina";
       actualizarNumeroRonda();
-      actualizarTurnos();
+      imprimirTurnos();
     }
   }
 }
 
+function mostrarTituloFinDelJuego() {
+  let $visorRondas = document.querySelector(".visor-rondas");
+  $visorRondas.value = "Fin del juego!";
+}
+
+function reiniciarDatos() {
+  listaSecuenciaMaquina = [];
+  listaSecuenciaUsuario = [];
+  numeroDeRonda = 0;
+}
+
+function mostrarRecordAlcanzado() {
+  let $recordUsuario = document.querySelector(".record-usuario");
+
+  if (recordRonda === 0) {
+    recordRonda = numeroDeRonda;
+  } else if (recordRonda > 0 && recordRonda < numeroDeRonda) {
+    recordRonda = numeroDeRonda;
+  }
+
+  $recordUsuario.textContent = `Récord: Ronda#${recordRonda}`;
+}
+
+function terminarJuego() {
+  mostrarTituloFinDelJuego();
+  mostrarBotonJugar();
+  ocultarIndicadorTurnos();
+  mostrarRecordAlcanzado();
+  reiniciarDatos();
+}
+
 $botonJugar.addEventListener("click", () => {
   gestionarRondas();
+  ocultarBotonJugar();
   mostrarIndicadorTurnos();
 
   setTimeout(() => {
