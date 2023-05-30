@@ -14,7 +14,7 @@ function mostrarColorElegidoUsuario(cuadroElegido) {
   }
 
   setTimeout(() => {
-    cuadroElegido.id = "";
+    cuadroElegido.id = "color-vanilla";
   }, 0500);
 }
 
