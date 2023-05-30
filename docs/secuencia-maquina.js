@@ -35,7 +35,7 @@ function mostrarColoresMaquina(colorMaquina) {
     }
 
     setTimeout(() => {
-      colorMaquina.id = "";
+      colorMaquina.id = "color-vanilla";
     }, 300);
   }
 }
